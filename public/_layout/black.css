@@ -1,0 +1,5 @@
+
+body{ background:url(images/black/bg-body.png) repeat top left; }
+a{}		
+#lighten{ background:url(images/black/bg-lighten.png) no-repeat bottom right; }
+#logo a{ background:url(images/black/bg-logo.png) no-repeat top left; }

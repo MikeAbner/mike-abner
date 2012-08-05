@@ -1,0 +1,228 @@
+/* =RESET
+=------------------------------------*/
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;font-family:inherit;font-size:100%;font-style:inherit;font-weight:inherit;margin:0;outline:0;padding:0;vertical-align:baseline;}
+:focus{outline:0;}
+body{background:#FFF;color:#000;line-height:1;}
+ol,ul{list-style:none;}
+table{border-collapse:separate;border-spacing:0;}
+caption,th,td{font-weight:400;text-align:left;}
+blockquote:before,blockquote:after,q:before,q:after{content:"";}
+
+/* =GENERAL
+--------------------- */
+
+body {
+	background:url(images/bg-body.png) repeat top left;
+	color:#515151;
+	font:12px Arial, sans-serif; 
+	line-height:20px;
+	color:#666666;
+}
+
+	html > body{ position:inherit; }	/* need for the lightbox to center images corectly in Firefox */
+	 
+	strong{font-weight:700;}
+	em{font-style:italic;}
+	a{color:#00F;}
+	
+	p{ margin-bottom:15px; }
+
+	.bordered{border:1px solid #cfcfcf; padding:9px; -moz-border-radius: 5px;}
+	
+	.img-float-left{float:left;margin:0 20px 0 0;}
+	.img-float-right{float:left;margin:0 0 0 20px;}
+	
+	.align-center{text-align:center;}
+	.align-right{text-align:right;}
+	.align-justify{text-align:justify;}
+
+	/* Clear Fix Hack - add  class="fixed"  to div's that have floated elements in them */
+	.fixed:after{content:"."; display:block; height:0; clear:both; visibility:hidden;}
+		.fixed{display:block;}
+		/*  \*/
+		.fixed{min-height:1%;}
+		* html .fixed{height:1%;}
+	
+/* =LAYOUT
+--------------------- */
+
+	/* adds the gradient in the right bottom corner */
+	#lighten {
+		background:url(images/bg-lighten.png) no-repeat bottom right;
+		height:750px; width:751px; z-index:1; position:fixed; right:0; bottom:0;
+	}
+	
+	.ie6 #lighten{ display:none; }
+
+/* =CONTAINER container that holds all the content
+--------------------------------------------------------------- */
+	
+	#container {
+		background:url(images/bg-container.png) no-repeat top left;
+		height:360px;
+		margin:150px auto 0;
+		position:relative;
+		width:680px;
+		z-index:2;
+	}
+		
+		/* =LOGO
+		--------------------- */
+			
+		#logo {
+			height:100px;
+			left:50px;
+			position:absolute;
+			top:65px;
+			width:108px;
+		}
+			
+			#logo a {
+				background:url(images/bg-logo.png) no-repeat top left;
+				display:block;
+				height:75px;
+				text-indent:-9999px;
+			}
+		
+		/* =NAV
+		--------------------- */
+			
+		#nav {
+			left:50px;
+			position:absolute;
+			top:180px;
+			}
+			
+			#nav li a {
+				color:#515151;
+				display:block;
+				font-size:17px;
+				line-height:28px;
+				padding-right:20px;
+				text-align:right;
+				text-decoration:none;
+				width:108px;
+			}
+			
+			#nav li a.active {
+				background:url(images/bg-nav-active.png) no-repeat center right;
+			}
+			
+			#nav li a:hover {
+				text-decoration:underline;
+			}
+		
+		/* =CONTAINER-INNER contains the #about #work #social #contact
+		--------------------------------------------------------------- */				
+	
+		#container-inner {
+			height:240px;
+			overflow:hidden;
+			position:absolute;
+			right:40px;
+			top:76px;
+			width:440px;
+		}
+			
+			/* =ABOUT
+			--------------------- */
+		
+			#about {
+				float:left;
+				height:240px;
+				overflow:hidden;
+				position:relative;
+				width:440px;
+			}
+		
+			/* =WORK
+			--------------------- */
+	
+			#work {
+				float:left;
+				height:240px;
+				overflow:hidden;
+				position:relative;
+				width:440px;
+			}	
+						
+				/* EasySlider 1.7
+				--------------------- */
+				#slider ul.slide-wrapper{background-color:#FFF;list-style:none;list-style-type:none;margin:0;padding:0;}
+				#slider li.slide{ /*  defines the width and height of the slides*/
+					background-color:#FFF;list-style:none;list-style-type:none;margin:0;padding:0;
+					height:220px;	
+					width:440px;
+				}
+				
+				.slide-items li{ list-style:none; display:inline;}
+				.slide-items li a{border:1px solid #cfcfcf;display:block;float:left;height:80px;margin-bottom:12px;margin-left:12px;padding:9px;width:80px;
+								  -moz-border-radius: 5px;}
+				.slide-items li a img{border:none;}
+				.slide-items li a:hover{background-color:#f4f4f4;}
+				.slide-items li a.first{margin-left:0;}
+				
+				 /*  numeric controls */
+				ol#controls{float:right;height:28px;margin-top:-5px;padding:0;}
+				ol#controls li{float:left;height:28px;line-height:28px;list-style:none;margin:0 5px 0 0;padding:0;}
+				ol#controls li a{color:#515151;float:left;font-size:14px;height:25px;line-height:25px;padding:0 5px;text-decoration:none;}
+				ol#controls li.current a{text-decoration:underline;}
+				ol#controls li a:focus,#prevBtn a:focus,#nextBtn a:focus{outline:none;}
+
+			/* =BLOG
+			--------------------- */
+			
+			#blog {
+				float:left;
+				height:240px;
+				overflow:hidden;
+				position:relative;
+				width:440px;
+			}
+				
+			/* =SOCIAL
+			--------------------- */
+			#social {
+				float:left;
+				height:240px;
+				overflow:hidden;
+				position:relative;
+				width:440px;
+			}
+	
+				#social li{display:inline;}
+				#social li a{color:#515151;display:block;float:left;font-size:12px;height:50px;margin-bottom:10px;text-decoration:none;width:220px;}
+				#social li a img{float:left;margin:0 16px 0 10px;}
+				#social li a:hover img{margin-left:4px;}
+				#social li a strong{display:block;font-size:18px;padding-top:6px;}
+	
+			/* =CONTACT
+			--------------------- */
+			
+			#contact {
+				float:left;
+				height:240px;
+				overflow:hidden;
+				position:relative;
+				width:440px;
+			}
+			
+				/* =CONTACT-FORM
+				--------------------- */
+				#contact-form{float:left;width:210px;}
+					form p{clear:both;margin-bottom:10px;}
+					input,textarea{background-color:#fff;border:1px solid #ccc;color:#515151;padding:5px;width:200px;}
+					textarea{height:35px;}
+					.btn{_height:25px;_padding:2px;width:80px; cursor:pointer; }
+				
+				#formstatus{clear:both;font-weight:700; font-size:10px; line-height:10px; }
+					.formstatuserror{color:red;}
+					.formstatusok{color:#0C3;}
+					
+				#contact-details{float:left;margin-left:25px;width:200px;}
+					#contact-details h4{font-size:18px;}
+			
+			
+				
+					
