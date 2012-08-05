@@ -61,7 +61,7 @@ body {
 	#container {
 		background:url(images/bg-container.png) no-repeat top left;
 		height:360px;
-		margin:150px auto 0;
+		margin:100px auto 0;
 		position:relative;
 		width:680px;
 		z-index:2;
@@ -146,7 +146,13 @@ body {
 				position:relative;
 				width:440px;
 			}	
-						
+			
+			.work-item h2 {
+				font-size: 24pt;
+				margin: 5px 0 5px 0;
+			}
+			
+								
 				/* EasySlider 1.7
 				--------------------- */
 				#slider ul.slide-wrapper{background-color:#FFF;list-style:none;list-style-type:none;margin:0;padding:0;}
