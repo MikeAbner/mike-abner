@@ -1,0 +1,196 @@
+---
+const {
+	title = 'Mike Abner',
+	description = 'The personal site of Mike Abner.',
+	activePath = '/',
+} = Astro.props;
+
+const socialLinks = [
+	{ label: 'LinkedIn', shortLabel: 'in', href: 'https://www.linkedin.com/in/mikeabner/' },
+	{
+		label: 'X',
+		icon: 'x',
+		href: 'https://x.com/mike_abner',
+		path: 'M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z',
+	},
+];
+
+const sections = [
+	{ path: '/', label: 'Home' },
+	{ path: '/about/', label: 'About me' },
+	{ path: '/resume/', label: 'Resume' },
+	{ path: '/portfolio/', label: 'Portfolio' },
+	{ path: '/contact/', label: 'Contact' },
+];
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content={description} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+	</head>
+	<body>
+		<a class="skip-link" href="#main-content">Skip to content</a>
+		<div class="page-shell">
+			<aside class="profile-sidebar">
+				<div class="profile-sidebar-inner">
+					<div class="avatar-wrap">
+						<img src="/avatar.png" alt="Illustrated profile portrait" class="avatar" />
+					</div>
+					<h1>Mike Abner</h1>
+					<p class="role">Engineering Leader</p>
+
+					<nav class="social-links" aria-label="Social links">
+						{socialLinks.map((link) => (
+							<a href={link.href} aria-label={link.label} target="_blank" rel="noreferrer">
+								{link.icon === 'x' ? (
+									<svg class="social-icon social-icon-x" viewBox="0 0 1200 1227" aria-hidden="true" focusable="false">
+										<path d={link.path} fill="currentColor" />
+									</svg>
+								) : (
+									link.shortLabel
+								)}
+							</a>
+						))}
+					</nav>
+				</div>
+				<p class="copyright">&copy; 2026 All rights reserved.</p>
+			</aside>
+
+			<main class="main-content" id="main-content">
+				<nav class="main-nav" aria-label="Main navigation">
+					<div class="nav-links">
+						{sections.map((section) => (
+							<a href={section.path} aria-current={activePath === section.path ? 'page' : undefined}>
+								{section.label}
+							</a>
+						))}
+					</div>
+				</nav>
+
+				<slot />
+			</main>
+		</div>
+	</body>
+</html>
+
+<style is:global>
+	@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
+	* { box-sizing: border-box; }
+	html { scroll-behavior: smooth; }
+	body {
+		min-height: 100vh;
+		min-width: 320px;
+		margin: 0;
+		background: #e9eef2 url('/page-background.png') center top / cover fixed no-repeat;
+		color: #222;
+		font-family: 'Lato', sans-serif;
+	}
+	a { color: inherit; }
+
+	.skip-link {
+		position: fixed;
+		top: 1rem;
+		left: 1rem;
+		z-index: 10;
+		padding: .7rem 1rem;
+		border-radius: .25rem;
+		background: #222;
+		color: #fff;
+		transform: translateY(-180%);
+	}
+	.skip-link:focus { transform: translateY(0); }
+
+	.page-shell {
+		display: grid;
+		grid-template-columns: 330px minmax(0, 1fr);
+		width: min(1128px, calc(100% - 60px));
+		min-height: calc(100vh - 108px);
+		min-height: calc(100dvh - 108px);
+		margin: 66px auto 42px;
+		border-radius: 31px;
+		box-shadow: 0 20px 45px rgba(55, 72, 84, .13);
+	}
+
+	.profile-sidebar {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		min-height: inherit;
+		padding: 64px 28px 18px;
+		border-radius: 31px 0 0 31px;
+		background: #10b8dd;
+		color: #fff;
+		text-align: center;
+	}
+	.profile-sidebar-inner { display: flex; flex-direction: column; align-items: center; width: 100%; }
+	.avatar-wrap {
+		width: 151px;
+		height: 151px;
+		padding: 3px;
+		border: 1px solid rgba(255, 255, 255, .9);
+		border-radius: 50%;
+		background: rgba(255, 255, 255, .16);
+	}
+	.avatar { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+	.profile-sidebar h1 { margin: 33px 0 1px; font-size: 36px; font-weight: 900; letter-spacing: -.045em; line-height: 1.1; }
+	.role { margin: 0; font-size: 20px; line-height: 1.35; }
+	.social-links { display: flex; gap: 21px; margin-top: 20px; }
+	.social-links a { display: grid; place-items: center; width: 18px; height: 22px; color: #fff; font-size: 20px; font-weight: 900; line-height: 1; text-decoration: none; }
+	.social-links a:hover, .social-links a:focus-visible { color: #d9f7ff; }
+	.social-icon { display: block; }
+	.social-icon-x { width: 18px; height: 18px; color: #fff; }
+	.copyright { margin: auto 0 0; font-size: 13px; font-weight: 700; }
+
+	.main-content {
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+		border-radius: 0 31px 31px 0;
+		background: #fff;
+		overflow: hidden;
+	}
+	.main-nav { display: flex; align-items: center; justify-content: space-between; gap: 25px; min-height: 72px; padding: 0 48px; border-bottom: 1px solid #f0f0f0; }
+	.main-nav { justify-content: flex-end; }
+	.nav-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 25px; }
+	.nav-links a { color: #8b8b8b; font-size: 14px; text-decoration: none; }
+	.nav-links a:hover, .nav-links a:focus-visible, .nav-links a[aria-current='page'] { color: #10aace; }
+	.hero { display: grid; flex: 1; min-height: 468px; place-items: center; padding: 60px 30px; text-align: center; }
+	.hero h2 { margin: 0; font-size: clamp(44px, 5vw, 62px); font-weight: 900; letter-spacing: -.045em; line-height: 1.08; }
+	.hero p { margin: 8px 0 0; color: #909090; font-size: 23px; }
+	.content-section { flex: 1; min-height: 468px; padding: 90px 11%; }
+	.section-kicker { margin: 0 0 14px; color: #10aace; font-size: 14px; font-weight: 700; text-transform: uppercase; }
+	.content-section h2 { max-width: 600px; margin: 0; font-size: clamp(30px, 4vw, 52px); font-weight: 900; letter-spacing: -.04em; line-height: 1.1; }
+
+	@media (max-width: 880px) {
+		.page-shell { grid-template-columns: 275px minmax(0, 1fr); width: min(100% - 32px, 760px); margin-top: 32px; }
+		.profile-sidebar { padding-inline: 20px; }
+		.profile-sidebar h1 { font-size: 30px; }
+		.role { font-size: 17px; }
+		.main-nav { padding-inline: 28px; }
+		.nav-links { gap: 14px; }
+	}
+
+	@media (max-width: 640px) {
+		.page-shell { display: block; width: calc(100% - 24px); min-height: auto; margin: 12px auto 24px; border-radius: 20px; }
+		.profile-sidebar { min-height: 420px; padding: 40px 20px 18px; border-radius: 20px 20px 0 0; }
+		.avatar-wrap { width: 130px; height: 130px; }
+		.profile-sidebar h1 { margin-top: 20px; font-size: 34px; }
+		.main-content { min-height: 100vh; min-height: 100dvh; border-radius: 0 0 20px 20px; }
+		.main-nav { min-height: 60px; padding: 0 20px; }
+		.nav-links { gap: 15px; overflow-x: auto; white-space: nowrap; }
+		.nav-links a { font-size: 13px; }
+		.hero { min-height: 360px; }
+		.hero h2 { font-size: 42px; }
+		.hero p { font-size: 19px; }
+		.content-section { min-height: 320px; padding: 65px 9%; }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html { scroll-behavior: auto; }
+	}
+</style>
