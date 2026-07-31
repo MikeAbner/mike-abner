@@ -17,9 +17,10 @@ const socialLinks = [
 
 const sections = [
 	{ path: '/', label: 'Home' },
-	{ path: '/about/', label: 'About me' },
-	{ path: '/resume/', label: 'Resume' },
-	{ path: '/portfolio/', label: 'Portfolio' },
+	{ path: '/about/', label: 'About' },
+	{ path: '/experience/', label: 'Experience' },
+	{ path: '/leadership-principles/', label: 'Leadership Principles' },
+	{ path: '/blog/', label: 'Blog' },
 	{ path: '/contact/', label: 'Contact' },
 ];
 ---
@@ -38,10 +39,10 @@ const sections = [
 			<aside class="profile-sidebar">
 				<div class="profile-sidebar-inner">
 					<div class="avatar-wrap">
-						<img src="/avatar.png" alt="Illustrated profile portrait" class="avatar" />
+						<img src="/mike-abner.jpg" alt="Mike Abner profile photo" class="avatar" />
 					</div>
 					<h1>Mike Abner</h1>
-					<p class="role">Engineering Leader</p>
+					<p class="role">Engineering Executive<br />and Technology Leader</p>
 
 					<nav class="social-links" aria-label="Social links">
 						{socialLinks.map((link) => (
@@ -137,9 +138,9 @@ const sections = [
 		background: rgba(255, 255, 255, .16);
 	}
 	.avatar { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-	.profile-sidebar h1 { margin: 33px 0 1px; font-size: 36px; font-weight: 900; letter-spacing: -.045em; line-height: 1.1; }
+	.profile-sidebar h1 { margin: 33px 0 1px; font-size: 46px; font-weight: 900; letter-spacing: -.045em; line-height: 1.1; }
 	.role { margin: 0; font-size: 20px; line-height: 1.35; }
-	.social-links { display: flex; gap: 21px; margin-top: 20px; }
+	.social-links { display: flex; gap: 21px; margin-top: 30px; }
 	.social-links a { display: grid; place-items: center; width: 18px; height: 22px; color: #fff; font-size: 20px; font-weight: 900; line-height: 1; text-decoration: none; }
 	.social-links a:hover, .social-links a:focus-visible { color: #d9f7ff; }
 	.social-icon { display: block; }
@@ -154,17 +155,21 @@ const sections = [
 		background: #fff;
 		overflow: hidden;
 	}
-	.main-nav { display: flex; align-items: center; justify-content: space-between; gap: 25px; min-height: 72px; padding: 0 48px; border-bottom: 1px solid #f0f0f0; }
+	.main-nav { display: flex; align-items: center; justify-content: space-between; gap: 25px; min-height: 72px; padding: 0 48px; }
 	.main-nav { justify-content: flex-end; }
 	.nav-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 25px; }
-	.nav-links a { color: #8b8b8b; font-size: 14px; text-decoration: none; }
+	.nav-links a { color: #8b8b8b; font-size: 16px; text-decoration: none; }
 	.nav-links a:hover, .nav-links a:focus-visible, .nav-links a[aria-current='page'] { color: #10aace; }
 	.hero { display: grid; flex: 1; min-height: 468px; place-items: center; padding: 60px 30px; text-align: center; }
 	.hero h2 { margin: 0; font-size: clamp(44px, 5vw, 62px); font-weight: 900; letter-spacing: -.045em; line-height: 1.08; }
 	.hero p { margin: 8px 0 0; color: #909090; font-size: 23px; }
-	.content-section { flex: 1; min-height: 468px; padding: 90px 11%; }
-	.section-kicker { margin: 0 0 14px; color: #10aace; font-size: 14px; font-weight: 700; text-transform: uppercase; }
-	.content-section h2 { max-width: 600px; margin: 0; font-size: clamp(30px, 4vw, 52px); font-weight: 900; letter-spacing: -.04em; line-height: 1.1; }
+	.content-section { flex: 1; min-height: 468px; padding: 90px 8%; }
+	.content-section h2 { max-width: 600px; margin: 0; font-size: clamp(30px, 3.8vw, 52px); font-weight: 900; letter-spacing: -.04em; line-height: 1.1; }
+	.page-copy { max-width: 650px; margin-top: 34px; color: #5f5f5f; font-size: 18px; line-height: 1.75; }
+	.page-copy p { margin: 0 0 20px; }
+	.page-copy p:last-child { margin-bottom: 0; }
+	.experience-list { display: grid; gap: 16px; margin-top: 42px; }
+	.experience-list h3 { margin: 0; font-size: 26px; font-weight: 900; line-height: 1.2; }
 
 	@media (max-width: 880px) {
 		.page-shell { grid-template-columns: 275px minmax(0, 1fr); width: min(100% - 32px, 760px); margin-top: 32px; }

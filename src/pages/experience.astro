@@ -1,0 +1,23 @@
+---
+import SiteShell from '../layouts/SiteShell.astro';
+
+const experienceItems = [
+	'HomeLight',
+	'Giftly',
+	'FGM',
+	'High Performance Technologies, Inc',
+	'American University',
+	'James Madison University',
+	'Westminster School',
+];
+---
+
+<SiteShell title="Experience | Mike Abner" activePath="/experience/">
+	<section class="content-section" aria-labelledby="experience-title">
+		<h2 id="experience-title">Experience and education</h2>
+
+		<div class="experience-list" aria-label="Companies and education">
+			{experienceItems.map((item) => <h3>{item}</h3>)}
+		</div>
+	</section>
+</SiteShell>
