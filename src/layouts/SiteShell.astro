@@ -35,45 +35,47 @@ const sections = [
 	</head>
 	<body>
 		<a class="skip-link" href="#main-content">Skip to content</a>
-		<div class="page-shell">
-			<aside class="profile-sidebar">
-				<div class="profile-sidebar-inner">
-					<div class="avatar-wrap">
-						<img src="/mike-abner.jpg" alt="Mike Abner profile photo" class="avatar" />
-					</div>
-					<h1>Mike Abner</h1>
-					<p class="role">Engineering Executive<br />and Technology Leader</p>
+		<div class="site-frame">
+			<div class="page-shell">
+				<aside class="profile-sidebar">
+					<div class="profile-sidebar-inner">
+						<div class="avatar-wrap">
+							<img src="/mike-abner.jpg" alt="Mike Abner profile photo" class="avatar" />
+						</div>
+						<h1>Mike Abner</h1>
+						<p class="role">Engineering Executive<br />and Technology Leader</p>
 
-					<nav class="social-links" aria-label="Social links">
-						{socialLinks.map((link) => (
-							<a href={link.href} aria-label={link.label} target="_blank" rel="noreferrer">
-								{link.icon === 'x' ? (
-									<svg class="social-icon social-icon-x" viewBox="0 0 1200 1227" aria-hidden="true" focusable="false">
-										<path d={link.path} fill="currentColor" />
-									</svg>
-								) : (
-									link.shortLabel
-								)}
-							</a>
-						))}
+						<nav class="social-links" aria-label="Social links">
+							{socialLinks.map((link) => (
+								<a href={link.href} aria-label={link.label} target="_blank" rel="noreferrer">
+									{link.icon === 'x' ? (
+										<svg class="social-icon social-icon-x" viewBox="0 0 1200 1227" aria-hidden="true" focusable="false">
+											<path d={link.path} fill="currentColor" />
+										</svg>
+									) : (
+										link.shortLabel
+									)}
+								</a>
+							))}
+						</nav>
+					</div>
+				</aside>
+
+				<main class="main-content" id="main-content">
+					<nav class="main-nav" aria-label="Main navigation">
+						<div class="nav-links">
+							{sections.map((section) => (
+								<a href={section.path} aria-current={activePath === section.path ? 'page' : undefined}>
+									{section.label}
+								</a>
+							))}
+						</div>
 					</nav>
-				</div>
-				<p class="copyright">&copy; 2026 All rights reserved.</p>
-			</aside>
 
-			<main class="main-content" id="main-content">
-				<nav class="main-nav" aria-label="Main navigation">
-					<div class="nav-links">
-						{sections.map((section) => (
-							<a href={section.path} aria-current={activePath === section.path ? 'page' : undefined}>
-								{section.label}
-							</a>
-						))}
-					</div>
-				</nav>
-
-				<slot />
-			</main>
+					<slot />
+				</main>
+			</div>
+			<p class="copyright">&copy; 2026 All rights reserved.</p>
 		</div>
 	</body>
 </html>
@@ -106,13 +108,22 @@ const sections = [
 	}
 	.skip-link:focus { transform: translateY(0); }
 
+	.site-frame {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		min-height: 100vh;
+		min-height: 100dvh;
+		padding: 66px 30px 24px;
+	}
+
 	.page-shell {
 		display: grid;
 		grid-template-columns: 330px minmax(0, 1fr);
-		width: min(1128px, calc(100% - 60px));
-		min-height: calc(100vh - 108px);
-		min-height: calc(100dvh - 108px);
-		margin: 66px auto 42px;
+		width: min(1128px, 100%);
+		min-height: calc(100vh - 137px);
+		min-height: calc(100dvh - 137px);
+		margin: 0 auto;
 		border-radius: 31px;
 		box-shadow: 0 20px 45px rgba(55, 72, 84, .13);
 	}
@@ -145,7 +156,13 @@ const sections = [
 	.social-links a:hover, .social-links a:focus-visible { color: #d9f7ff; }
 	.social-icon { display: block; }
 	.social-icon-x { width: 18px; height: 18px; color: #fff; }
-	.copyright { margin: auto 0 0; font-size: 13px; font-weight: 700; }
+	.copyright {
+		margin: 16px 0 0;
+		color: #6f7d86;
+		font-size: 13px;
+		font-weight: 700;
+		text-align: center;
+	}
 
 	.main-content {
 		display: flex;
@@ -172,7 +189,8 @@ const sections = [
 	.experience-list h3 { margin: 0; font-size: 26px; font-weight: 900; line-height: 1.2; }
 
 	@media (max-width: 880px) {
-		.page-shell { grid-template-columns: 275px minmax(0, 1fr); width: min(100% - 32px, 760px); margin-top: 32px; }
+		.site-frame { padding: 32px 16px 20px; }
+		.page-shell { grid-template-columns: 275px minmax(0, 1fr); width: min(100%, 760px); }
 		.profile-sidebar { padding-inline: 20px; }
 		.profile-sidebar h1 { font-size: 30px; }
 		.role { font-size: 17px; }
@@ -181,13 +199,14 @@ const sections = [
 	}
 
 	@media (max-width: 640px) {
-		.page-shell { display: block; width: calc(100% - 24px); min-height: auto; margin: 12px auto 24px; border-radius: 20px; }
-		.profile-sidebar { min-height: 420px; padding: 40px 20px 18px; border-radius: 20px 20px 0 0; }
+		.site-frame { padding: 12px 12px 18px; }
+		.page-shell { display: block; width: 100%; min-height: auto; border-radius: 20px; }
+		.profile-sidebar { min-height: 340px; padding: 28px 16px 14px; border-radius: 20px 20px 0 0; }
 		.avatar-wrap { width: 130px; height: 130px; }
 		.profile-sidebar h1 { margin-top: 20px; font-size: 34px; }
 		.main-content { min-height: 100vh; min-height: 100dvh; border-radius: 0 0 20px 20px; }
-		.main-nav { min-height: 60px; padding: 0 20px; }
-		.nav-links { gap: 15px; overflow-x: auto; white-space: nowrap; }
+		.main-nav { justify-content: center; min-height: 60px; padding: 0 20px; }
+		.nav-links { justify-content: center; gap: 15px; overflow-x: auto; white-space: nowrap; }
 		.nav-links a { font-size: 13px; }
 		.hero { min-height: 360px; }
 		.hero h2 { font-size: 42px; }
