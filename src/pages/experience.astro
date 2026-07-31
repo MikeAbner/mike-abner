@@ -2,13 +2,33 @@
 import SiteShell from '../layouts/SiteShell.astro';
 
 const experienceItems = [
-	'HomeLight',
-	'Giftly',
-	'FGM',
-	'High Performance Technologies, Inc',
-	'American University',
-	'James Madison University',
-	'Westminster School',
+	{
+		name: 'HomeLight',
+		dates: 'Apr 2013 to present',
+		location: 'San Francisco, CA',
+		roles: 'Senior Software Engineer → Director of Engineering → VP of Engineering → CTO',
+	},
+	{
+		name: 'Giftly',
+		dates: 'Jan 2011 to Mar 2013',
+		location: 'San Francisco, CA',
+		roles: 'Senior Software Engineer',
+	},
+	{
+		name: 'FGM',
+		dates: 'May 2004 to Jan 2011',
+		location: 'Reston, VA',
+		roles: 'Software Engineer → Senior Software Engineer',
+	},
+	{
+		name: 'High Performance Technologies, Inc',
+		dates: 'Jun 2001 to May 2004',
+		location: 'Arlington, VA',
+		roles: 'Software Engineer',
+	},
+	{ name: 'American University', dates: '2001 - 2003', location: 'Washington, DC' },
+	{ name: 'James Madison University', dates: '1997 - 2001', location: 'Harrisonburg, VA' },
+	{ name: 'Westminster School', dates: '1994 - 1997', location: 'Simsbury, CT' },
 ];
 ---
 
@@ -17,7 +37,15 @@ const experienceItems = [
 		<h2 id="experience-title">Experience and education</h2>
 
 		<div class="experience-list" aria-label="Companies and education">
-			{experienceItems.map((item) => <h3>{item}</h3>)}
+			{experienceItems.map((item) => (
+				<h3>
+					<span>{item.name}</span>
+					<span class="experience-meta">
+						{[item.dates, item.location].filter(Boolean).join(' · ')}
+					</span>
+					{item.roles && <span class="experience-roles">{item.roles}</span>}
+				</h3>
+			))}
 		</div>
 	</section>
 </SiteShell>
