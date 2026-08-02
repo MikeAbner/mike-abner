@@ -1,0 +1,74 @@
+---
+import SiteShell from './SiteShell.astro';
+
+const { frontmatter } = Astro.props;
+const title = `${frontmatter.title} | How I Build | Mike Abner`;
+---
+
+<SiteShell title={title} description={frontmatter.teaser} activePath="/how-i-build/">
+	<article class="content-section post-detail" aria-labelledby="post-title">
+		<nav class="breadcrumbs" aria-label="Breadcrumb">
+			<a href="/how-i-build/">How I Build</a>
+			<span aria-hidden="true">&gt;</span>
+			<span>{frontmatter.category}</span>
+			<span aria-hidden="true">&gt;</span>
+			<span>{frontmatter.title}</span>
+		</nav>
+		<h2 id="post-title">{frontmatter.title}</h2>
+		<p class="post-teaser">{frontmatter.teaser}</p>
+
+		<div class="post-body">
+			<slot />
+		</div>
+	</article>
+</SiteShell>
+
+<style>
+	.post-detail {
+		max-width: none;
+	}
+
+	.breadcrumbs {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		align-items: center;
+		margin-bottom: 30px;
+		color: #8b8b8b;
+		font-size: 12px;
+		font-weight: 700;
+		line-height: 1.4;
+	}
+
+	.breadcrumbs a {
+		color: #10aace;
+		text-decoration: none;
+	}
+
+	.breadcrumbs a:hover,
+	.breadcrumbs a:focus-visible {
+		text-decoration: underline;
+	}
+
+	.post-teaser {
+		max-width: 650px;
+		margin: 16px 0 0;
+		color: #666;
+		line-height: 1.65;
+	}
+
+	.post-body {
+		max-width: 650px;
+		margin-top: 34px;
+		color: #444;
+		line-height: 1.75;
+	}
+
+	.post-body :global(p) {
+		margin: 0 0 20px;
+	}
+
+	.post-body :global(p:last-child) {
+		margin-bottom: 0;
+	}
+</style>

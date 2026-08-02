@@ -94,6 +94,7 @@ const sections = [
 		font-family: 'Lato', sans-serif;
 	}
 	a { color: inherit; }
+	p { font-size: 14px; }
 
 	.skip-link {
 		position: fixed;
@@ -150,7 +151,7 @@ const sections = [
 	}
 	.avatar { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
 	.profile-sidebar h1 { margin: 33px 0 1px; font-size: 46px; font-weight: 900; letter-spacing: -.045em; line-height: 1.1; }
-	.role { margin: 0; font-size: 20px; line-height: 1.35; }
+	.role { margin: 0; line-height: 1.35; }
 	.social-links { display: flex; gap: 21px; margin-top: 30px; }
 	.social-links a { display: grid; place-items: center; width: 18px; height: 22px; color: #fff; font-size: 20px; font-weight: 900; line-height: 1; text-decoration: none; }
 	.social-links a:hover, .social-links a:focus-visible { color: #d9f7ff; }
@@ -159,7 +160,6 @@ const sections = [
 	.copyright {
 		margin: 16px 0 0;
 		color: #6f7d86;
-		font-size: 13px;
 		font-weight: 700;
 		text-align: center;
 	}
@@ -179,10 +179,10 @@ const sections = [
 	.nav-links a:hover, .nav-links a:focus-visible, .nav-links a[aria-current='page'] { color: #10aace; }
 	.hero { display: grid; flex: 1; min-height: 468px; place-items: center; padding: 60px 30px; text-align: center; }
 	.hero h2 { margin: 0; font-size: clamp(44px, 5vw, 62px); font-weight: 900; letter-spacing: -.045em; line-height: 1.08; }
-	.hero p { margin: 8px 0 0; color: #909090; font-size: 23px; }
+	.hero p { margin: 8px 0 0; color: #909090; }
 	.content-section { flex: 1; min-height: 468px; padding: 90px 8%; }
 	.content-section h2 { max-width: 600px; margin: 0; font-size: clamp(30px, 3.8vw, 52px); font-weight: 900; letter-spacing: -.04em; line-height: 1.1; }
-	.page-copy { max-width: 650px; margin-top: 34px; color: #5f5f5f; font-size: 18px; line-height: 1.75; }
+	.page-copy { max-width: 650px; margin-top: 34px; color: #5f5f5f; line-height: 1.75; }
 	.page-copy p { margin: 0 0 20px; }
 	.page-copy p:last-child { margin-bottom: 0; }
 	.experience-list { display: grid; gap: 16px; margin-top: 42px; }
@@ -195,7 +195,6 @@ const sections = [
 		.page-shell { grid-template-columns: 275px minmax(0, 1fr); width: min(100%, 760px); }
 		.profile-sidebar { padding-inline: 20px; }
 		.profile-sidebar h1 { font-size: 30px; }
-		.role { font-size: 17px; }
 		.main-nav { padding-inline: 28px; }
 		.nav-links { gap: 14px; }
 	}
@@ -212,7 +211,6 @@ const sections = [
 		.nav-links a { font-size: 13px; }
 		.hero { min-height: 360px; }
 		.hero h2 { font-size: 42px; }
-		.hero p { font-size: 19px; }
 		.content-section { min-height: 320px; padding: 65px 9%; }
 	}
 

@@ -1,0 +1,127 @@
+---
+import type { MarkdownInstance } from 'astro';
+import SiteShell from '../../layouts/SiteShell.astro';
+
+interface PostFrontmatter {
+	title: string;
+	category: string;
+	teaser: string;
+}
+
+const categoryTitles = ['Category A', 'Category B', 'Category C'];
+const markdownPosts = Object.values(
+	import.meta.glob<MarkdownInstance<PostFrontmatter>>('./**/*.md', { eager: true })
+);
+const withTrailingSlash = (url: string | undefined) => url ? `${url.replace(/\/$/, '')}/` : undefined;
+
+const additionalPostsByCategory = new Map([
+	[
+		'Category A',
+		[
+			{
+				title: 'Favor Explicit code over Implicit Code',
+				teaser: 'Make your code readable to improve velocity',
+			},
+		],
+	],
+]);
+
+const categories = categoryTitles.map((title) => ({
+	title,
+	posts: [
+		...markdownPosts
+			.filter((post) => post.frontmatter.category === title)
+			.map((post) => ({
+				title: post.frontmatter.title,
+				teaser: post.frontmatter.teaser,
+				url: withTrailingSlash(post.url),
+			})),
+		...(additionalPostsByCategory.get(title) ?? []),
+	],
+}));
+---
+
+<SiteShell title="How I Build | Mike Abner" activePath="/how-i-build/">
+	<section class="content-section" aria-labelledby="how-i-build-title">
+		<h2 id="how-i-build-title">How I Build</h2>
+
+		<div class="post-categories">
+			{categories.map((category) => (
+				<section class="post-category" aria-labelledby={`${category.title.toLowerCase().replaceAll(' ', '-')}-title`}>
+					<h3 id={`${category.title.toLowerCase().replaceAll(' ', '-')}-title`}>{category.title}</h3>
+					<div class="post-list">
+						{category.posts.length > 0 ? (
+							category.posts.map((post) => (
+								<article class="post-preview">
+									<h4>
+										{post.url ? (
+											<a href={post.url}>{post.title}</a>
+										) : (
+											post.title
+										)}
+									</h4>
+									<p>{post.teaser}</p>
+								</article>
+							))
+						) : (
+							<p class="empty-category">Posts coming soon.</p>
+						)}
+					</div>
+				</section>
+			))}
+		</div>
+	</section>
+</SiteShell>
+
+<style>
+	.post-categories {
+		display: grid;
+		gap: 34px;
+		max-width: 680px;
+		margin-top: 42px;
+	}
+
+	.post-category h3 {
+		margin: 0 0 14px;
+		color: #222;
+		font-size: 22px;
+		font-weight: 900;
+		line-height: 1.2;
+	}
+
+	.post-list {
+		display: grid;
+		gap: 18px;
+	}
+
+	.post-preview h4 {
+		margin: 0 0 5px;
+		font-size: 18px;
+		font-weight: 900;
+		line-height: 1.25;
+	}
+
+	.post-preview h4 a {
+		color: #10aace;
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 4px;
+	}
+
+	.post-preview h4 a:hover,
+	.post-preview h4 a:focus-visible {
+		color: #087f9b;
+	}
+
+	.post-preview p,
+	.empty-category {
+		margin: 0;
+		color: #666;
+		line-height: 1.55;
+	}
+
+	.empty-category {
+		color: #8b8b8b;
+		font-style: italic;
+	}
+</style>
