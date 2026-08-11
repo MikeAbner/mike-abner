@@ -41,3 +41,15 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+
+
+Blog posts ideas
+- choose boring technology
+- attrition is (can be) a good thing
+- the people who you think are absolutely critical generally are bot
+- don’t make tech/architecture decisions to give someone work to earn a promotion
+- never connect local to production
+- yagni is real, lean into it to ship faster
+- executive quality makes a huge difference
+- 
